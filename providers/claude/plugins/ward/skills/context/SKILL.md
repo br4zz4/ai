@@ -1,6 +1,17 @@
-# ward:workspace
+# ward:context
 
 Use this skill when working with ward in a project — setting up secrets, creating vaults, configuring environments, or debugging merge issues.
+
+## File hierarchy
+
+Always create ward files in the correct location based on context:
+
+- **Project-level secrets** → `.ward/vault/secrets.ward` (base, shared across all envs)
+- **Per-environment secrets** → `.ward/vault/<env>.ward` (e.g. `staging.ward`, `production.ward`)
+- **Shared secrets (monorepo)** → path declared in `.ward/config.yaml` under `vaults`, e.g. `../.commons/ward/vaults/shared/`
+- **Out-of-vault files** → only when the path is explicitly declared in `config.yaml`
+
+Before creating any file, run `ward vaults` to check which paths are already registered. New files must be inside a registered vault path or added to `config.yaml` first. Never create `.ward` files in arbitrary locations.
 
 ## Setting up ward in a project
 
