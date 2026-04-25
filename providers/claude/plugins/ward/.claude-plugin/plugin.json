@@ -1,10 +1,16 @@
 {
   "name": "br4zz4:ward",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Claude Code context and skills for the ward secrets manager.",
   "author": {
     "name": "br4zz4"
   },
   "homepage": "https://github.com/br4zz4/ward",
-  "license": "MIT"
+  "license": "MIT",
+  "mcpServers": {
+    "ward": {
+      "command": "ward",
+      "args": ["--mcp"]
+    }
+  }
 }
