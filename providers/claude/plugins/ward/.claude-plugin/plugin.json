@@ -8,7 +8,7 @@
   "homepage": "https://github.com/br4zz4/ward",
   "license": "MIT",
   "mcpServers": {
-    "ward": {
+    "secrets": {
       "command": "ward",
       "args": ["--mcp"]
     }
