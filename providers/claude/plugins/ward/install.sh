@@ -15,7 +15,20 @@ MARKETPLACE_NAME="br4zz4"
 PLUGINS_DIR="${CLAUDE_DIR}/plugins"
 SETTINGS_FILE="${CLAUDE_DIR}/settings.json"
 
-mkdir -p "${PLUGINS_DIR}"
+BASE_URL="https://raw.githubusercontent.com/br4zz4/ai/main/providers/claude/plugins/ward"
+PLUGIN_DIR="${PLUGINS_DIR}/${PLUGIN_NAME}"
+
+# --- plugin files: download ---
+download() {
+    local dest="${PLUGIN_DIR}/${1}"
+    mkdir -p "$(dirname "$dest")"
+    curl -fsSL "${BASE_URL}/${1}" -o "$dest"
+}
+
+download ".claude-plugin/plugin.json"
+download "CLAUDE.md"
+download "skills/ward:workspace/SKILL.md"
+step "plugin files downloaded"
 
 # --- marketplace: register in settings.json ---
 if [ -f "${SETTINGS_FILE}" ] && command -v jq &>/dev/null; then
